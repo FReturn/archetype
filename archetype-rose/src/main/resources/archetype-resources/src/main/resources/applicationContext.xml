@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd"
+       default-autowire="byType">
+
+    <!--启动dao目录中以DAO结尾类的自动加载-->
+    <bean class="net.paoding.rose.jade.context.spring.JadeBeanFactoryPostProcessor"/>
+
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="ignoreUnresolvablePlaceholders" value="true" />
+        <property name="locations">
+            <list>
+                <value>classpath:db.properties</value>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+          destroy-method="close">
+        <property name="driverClassName" value="${jdbc.driver.class}" />
+        <property name="url" value="${jdbc.host.url}" />
+        <property name="username" value="${jdbc.host.user}" />
+        <property name="password" value="${jdbc.host.password}" />
+        <property name="initialSize" value="10" />
+        <property name="minIdle" value="10" />
+        <property name="maxActive" value="50" />
+        <property name="removeAbandoned" value="true" />
+        <property name="removeAbandonedTimeout" value="3600"/>
+        <property name="connectionProperties" value="useUnicode=true;characterEncoding=utf8;"/>
+    </bean>
+</beans>
