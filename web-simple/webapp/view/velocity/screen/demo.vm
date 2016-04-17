@@ -1,0 +1,18 @@
+hi,你好:
+</br>
+</br>
+
+
+
+<h3>欢迎使用web-simple骨架生成所需项目</h3>
+
+<div>(如果你能在浏览器访问时看到本页面,说明你的项目骨架成功生成) </div>
+
+你还可以访问<a href="http://localhost:8080/testGetJson">http://localhost:8080/testGetJson</a>直接获取json数据
+
+
+
+
+</br>
+</br>
+现在时间:$!{date}
